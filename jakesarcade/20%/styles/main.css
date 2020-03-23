@@ -1,0 +1,81 @@
+header{
+    min-height:75px;
+    max-height:75px;
+    
+}
+body{
+    background:black;
+    font-family:Joystix Monospace;
+    font-size:12pt;
+}
+.text-yellow{
+    color: var(--yellow);
+}
+.bg-yellow{
+    background: var(--yellow);
+}
+#bar{
+    height:10px;
+    margin-bottom:50px;
+}
+.score{
+    float:right;
+    margin-right:60px;
+}
+
+#title{
+    padding-top:13px;
+}
+
+@font-face {
+    font-family: 'Joystix Monospace';
+    src: url('JoystixMonospace-Regular.woff2') format('woff2'),
+        url('JoystixMonospace-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.img-cont{
+    display: inline-block; 
+    width: 100%;
+    position: relative;
+}
+
+.overlay{
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%) translateY(-50%);
+    opacity: 0%; 
+    transition: opacity .25s ease;
+    font-size:25pt;
+    color: var(--primary);
+    pointer-events: none; 
+}
+
+
+.card {
+    display: inline-block; 
+    position: relative; 
+    width: 150px; 
+    height: 500px; 
+    
+    
+    
+}
+.card-img-top {
+    transition:all .25s ease;
+    filter:blur(0px)brightness(100%);
+}
+.card-img-top:hover{
+    cursor:pointer;    
+}
+.img-cont:hover .overlay{
+    opacity: 100%;
+}
+.img-cont:hover .card-img-top {
+    filter: blur(4px) brightness(90%);
+}
+.hs-btn, .detailsBtn{
+    cursor:pointer;
+}
