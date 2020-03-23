@@ -7,21 +7,21 @@
 </head>
 
 <body>
-    <header class='bg-black text-center text-primary'>
-        <h1 id='title'>Jake's 20% Arcade</h1>
-    </header>
-    <div id='bar' class='bg-yellow'></div>
+  <header class='bg-black text-center text-primary'>
+    <h1 id='title'>Jake's 20% Arcade</h1>
+  </header>
+  <div id='bar' class='bg-yellow'></div>
 
-    <div class='container'>
-        <div class='row'>
+  <div class='container'>
+    <div class='row'>
 
-            <div class="card bg-yellow flip-card">
-             <div class='flip-card-inner'>
-                <div class='flip-card-front'>
-                <div class="img-cont">
-                    <img class="card-img-top" src="img/ph.jpeg" alt="Card image cap" />
-                    <div class='overlay'>Play</div>
-                </div>
+      <div class="card bg-yellow flip-card">
+        <div class='flip-card-inner'>
+          <div class='flip-card-front'>
+            <div class="img-cont">
+              <img class="card-img-top" src="img/ph.jpeg" alt="Card image cap" />
+              <div class='overlay'>Play</div>
+              </div>
                 <div class="card-body">
                     <h5 class="card-title text-primary">Minesweeper</h5>
                     <p class="card-text text-secondary">Click the safe tiles to clear the mines from the field</p>
