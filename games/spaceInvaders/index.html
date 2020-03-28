@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Invaders</title>
+    <link rel="stylesheet" type="text/css" href="./../gameStyle.css" />
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./../b5.js"></script>
+    <script src="./Alien.js"></script>
+    <script src="./Player.js"></script>
+    <script src="./Row.js"></script>
+    <script>
+      /*
+       ROW
+        - Movement speed
+        - enemies (Array)
+       ENEMY
+        - Bullet Velocity
+        - Health
+        - Score
+        - Sprite
+      */
+      let main;
+      let cWidth, cHeight;
+      $(document).ready(initialize());
+
+      function initialize() {
+        cWidth = window.innerWidth;
+        cHeight = window.innerHeight;
+        main = new Player();
+        createCanvas(cWidth, cHeight);
+
+        gameStartScreen();
+
+        const draw = () => {
+          background(cWidth, cHeight, black);
+          main.draw();
+        };
+
+        const waiting = setInterval(() => {
+          if (k.a || k.w || k.s || k.d) {
+            const animLoop = setInterval(draw, 1000 / 60);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
