@@ -6,7 +6,12 @@ function Alien(x, y, health, fireRate) {
   this.width;
   this.fireTimer = 0;
 }
-Alien.prototype.draw = function () {};
+Alien.prototype.draw = function () {
+  begin();
+  con.arc(this.pos.x, this.pos.y, 16, 0, 7, true);
+  fill("blue");
+  end();
+};
 Alien.prototype.fire = function () {
   this.fireRate++;
   if (this.fireRate === this.fireTimer) {
@@ -14,4 +19,7 @@ Alien.prototype.fire = function () {
     return [true, new Bullet(this.pos.x, this.pos.y, this.fireVel)];
   }
   return [false, null];
+};
+Alien.prototype.update = function (y) {
+  this.pos.y = y;
 };

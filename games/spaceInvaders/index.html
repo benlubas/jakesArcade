@@ -26,25 +26,35 @@
       */
       let main, score;
       let cWidth, cHeight;
+      let rows;
       $(document).ready(initialize());
 
       function initialize() {
-        console.log("hi there");
         cWidth = 900;
         cHeight = 600;
         score = 0;
+        rows = [new Row(cWidth, 40, 3)];
         main = new Player(cWidth / 2 - 16, 525, 5, 100, 30);
         createCanvas(cWidth, cHeight);
 
+        //////////////////////
+        ////////UPDATE////////
+        //////////////////////
         function update() {
+          //MOVE THINGS
           main.move(cWidth, cHeight);
-          if (k.space) {
-            console.log("bullet");
-            main.shoot();
-          }
+          if (k.space) main.shoot();
+
           main.updateBullets();
+          rows.forEach((r) => r.move(0.5));
+
+          //COLLISIONS
+
           draw();
         }
+        /////////////////////
+        ////////DRAW/////////
+        /////////////////////
         function draw() {
           background("black", cWidth, cHeight);
           canvasText(
@@ -55,8 +65,11 @@
             "green"
           );
           main.draw();
-          mouse.draw();
           main.drawBullets();
+
+          rows.forEach((r) => r.draw());
+
+          mouse.draw();
         }
 
         // game start
