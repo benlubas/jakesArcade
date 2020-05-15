@@ -12,6 +12,7 @@
     <script src="./Alien.js"></script>
     <script src="./Player.js"></script>
     <script src="./Row.js"></script>
+    <script src="./Bullet.js"></script>
     <script>
       /*
        ROW
@@ -23,28 +24,67 @@
         - Score
         - Sprite
       */
-      let main;
+      let main, score;
       let cWidth, cHeight;
       $(document).ready(initialize());
 
       function initialize() {
-        cWidth = window.innerWidth;
-        cHeight = window.innerHeight;
-        main = new Player();
+        console.log("hi there");
+        cWidth = 900;
+        cHeight = 600;
+        score = 0;
+        main = new Player(cWidth / 2 - 16, 525, 5, 100, 30);
         createCanvas(cWidth, cHeight);
 
-        gameStartScreen();
-
-        const draw = () => {
-          background(cWidth, cHeight, black);
-          main.draw();
-        };
-
-        const waiting = setInterval(() => {
-          if (k.a || k.w || k.s || k.d) {
-            const animLoop = setInterval(draw, 1000 / 60);
+        function update() {
+          main.move(cWidth, cHeight);
+          if (k.space) {
+            console.log("bullet");
+            main.shoot();
           }
-        });
+          main.updateBullets();
+          draw();
+        }
+        function draw() {
+          background("black", cWidth, cHeight);
+          canvasText(
+            "Score:" + score,
+            new Point(cWidth / 2, cHeight - 0),
+            "Joystix Monospace",
+            20,
+            "green"
+          );
+          main.draw();
+          mouse.draw();
+          main.drawBullets();
+        }
+
+        // game start
+        const waiting = setInterval(() => {
+          console.log("waiting");
+          background("black", cWidth, cHeight);
+          //(text, pos, font, size, color, options)
+          canvasText(
+            "Press W A S D",
+            new Point(cWidth / 2, cHeight / 2),
+            "Joystix Monospace",
+            50,
+            "red"
+          );
+          canvasText(
+            "to start!",
+            new Point(cWidth / 2, cHeight / 2 + 50),
+            "Joystix Monospace",
+            50,
+            "red"
+          );
+          mouse.draw();
+
+          if (k.a || k.w || k.s || k.d) {
+            const animLoop = setInterval(update, 1000 / 60);
+            clearInterval(waiting);
+          }
+        }, 1000 / 60);
       }
     </script>
   </body>

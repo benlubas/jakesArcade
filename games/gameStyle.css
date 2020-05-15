@@ -2,3 +2,10 @@ body {
   padding: 0px;
   margin: 0px;
 }
+@font-face {
+  font-family: "Joystix Monospace";
+  src: url("JoystixMonospace-Regular.woff2") format("woff2"),
+    url("JoystixMonospace-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
